@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React,{useState} from "react"
+import SearchBox from "./components/SearchBox"
+import Gallery from "./components/Gallery"
+import { Box, Grid } from "@material-ui/core";
 function App() {
+  const [results, setResults] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Box maxWidth={"md"} className="App">
+<Grid container alignItems="center" justify="center">
+<Grid item xs={12}>
+<SearchBox setResults={setResults} />
+</Grid>
+<Grid item xs={12}>
+  <Gallery results={results}/>
+</Grid>
+</Grid>
+  </Box>
+  )
 }
 
 export default App;
